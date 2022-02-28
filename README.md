@@ -12,3 +12,17 @@ libraryDependencies ++= Seq(
   "io.chrisdavenport" %% "test-ember-timoeut" % "<version>"
 )
 ```
+
+On one terminal
+```
+nc -l 8765
+```
+
+On another terminal
+```
+sbt coreJVM/run
+```
+
+- ctrl-C to terminate
+- ctrl-T to take fiber dump
+

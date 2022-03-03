@@ -10,7 +10,8 @@ ThisBuild / testFrameworks += new TestFramework("munit.Framework")
 val catsV = "2.7.0"
 val catsEffectV = "3.3.3"
 val fs2V = "3.2.3"
-val http4sV = "0.23.7"
+// val http4sV = "0.23.7" // reproduces
+val http4sV = "0.23.8-312-55d4080-SNAPSHOT" // should fix
 val munitCatsEffectV = "1.0.7"
 
 
@@ -43,7 +44,10 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
 
     )
   ).jvmSettings(
-    assembly / assemblyJarName := "example.jar"
+    assembly / assemblyJarName := "example.jar",
+    libraryDependencies ++= Seq(
+      "ch.qos.logback" % "logback-classic" % "1.2.3"
+    )
   ).jsSettings(
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule)},

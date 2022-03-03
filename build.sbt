@@ -42,6 +42,8 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
       "org.typelevel"               %%% "munit-cats-effect-3"        % munitCatsEffectV         % Test,
 
     )
+  ).jvmSettings(
+    assembly / assemblyJarName := "example.jar"
   ).jsSettings(
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule)},
